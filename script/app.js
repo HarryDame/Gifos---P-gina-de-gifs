@@ -4,17 +4,36 @@ let contAll = document.getElementById("trends");
 
 async function buscar() {
     try {
-        let data = await (fetch(`http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=${apiKey}&limit=1`));
-        let data2 = data.json();
-        console.log(data2);
+        let request = await (fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`));
+        let response = await request.json();
+        console.log(response);
+        let text = document.createElement('p');
+        text.textContent = response.data[0];
+        contAll.appendChild(n);
 
-        let image = document.createElement("img");
 
-        image.setAttribute('src', data.data2.url);
-        contAll.appendChild(image);
     } catch (error) {
-        console.log("Errorrrrrrr:", error);
+        console.log("Error:", error);
     }
 
 }
 buscar();
+// async function buscar() {
+//     try {
+//         let request = await (fetch(`https://api.giphy.com/v1/gifs/random?api_key=bPvCCZM88k66UZXoKNKFiP66bA1HCe4B&tag=&rating=g`));
+//         let response = await request.json();
+//         console.log(response);
+//         let gif = document.createElement('div');
+//         let text = document.createElement('p');
+//         text.textContent = response.data[0];
+//         gif.style.width = "200px";
+//         gif.style.height = "200px";
+//         gif.style.backgroundSize = "contain";
+//         gif.style.backgroundImage = `url(${response.data.images.fixed_width.url})`;
+//         contAll.appendChild(text);
+//         contAll.appendChild(gif);
+//     } catch (error) {
+//         console.log("Error:", error);
+//     }
+
+// }
