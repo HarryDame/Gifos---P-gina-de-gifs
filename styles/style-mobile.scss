@@ -1,0 +1,254 @@
+@import 'variables';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $montserrat;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    height: 95px;
+    width: 100%;
+    border-top: 5px solid $violeta;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+    z-index: 3;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    .logo {
+        width: 48.8px;
+        height: 48.8px;
+    }
+    img {
+        margin: 0 1rem;
+    }
+    input[type="checkbox"] {
+        display: none;
+        // margin-right: 1rem;
+        &:checked~nav {
+            display: flex;
+            flex-flow: column wrap;
+            top: 95px;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: $violeta;
+            opacity: 90%;
+            ul {
+                padding-top: 17px;
+                li {
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    text-align: center;
+                    font-weight: bold;
+                    font-size: 15px;
+                    &::after {
+                        content: "";
+                        display: block;
+                        margin: 0 auto;
+                        width: 40px;
+                        border-bottom: 1px solid white;
+                        margin-top: 10px;
+                    }
+                    &:last-child {
+                        display: none;
+                    }
+                    a {
+                        color: white;
+                        text-decoration: none;
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+        &:checked~label {
+            .close-btn {
+                display: initial;
+            }
+            .burger-btn {
+                display: none;
+            }
+        }
+    }
+    label {
+        display: flex;
+        .close-btn {
+            display: none;
+        }
+    }
+    nav {
+        display: none;
+        ul {
+            list-style: none;
+        }
+    }
+}
+
+// Main************************************************************
+main {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    margin-top: 95px;
+    .people {
+        margin-top: 8%;
+        width: 75%;
+        align-self: center;
+    }
+    .home {
+        display: flex;
+        flex-flow: column wrap;
+        align-content: center;
+        width: 100%;
+        h1 {
+            font-size: 25px;
+            width: 80%;
+            color: $violeta;
+            font-weight: bold;
+            align-self: center;
+            span {
+                color: $celeste;
+            }
+        }
+        .search-bar {
+            border: 1px solid $violeta;
+            border-radius: 250px;
+            -webkit-border-radius: 250px;
+            -moz-border-radius: 250px;
+            -ms-border-radius: 250px;
+            -o-border-radius: 250px;
+            align-self: center;
+            width: 90%;
+            padding: 3% 4%;
+            .search {
+                border: none;
+                font-family: $roboto;
+                font-size: 16px;
+                float: left;
+                font-weight: normal;
+                &::placeholder {
+                    color: $gris-mobile;
+                }
+            }
+            img {
+                float: right;
+            }
+        }
+        .trends {
+            margin: 10% 20%;
+            h3 {
+                font-size: 16px;
+                color: $violeta;
+                font-weight: 700;
+                line-height: 25px;
+            }
+            p {
+                margin: 1% 0;
+                color: $violeta;
+                line-height: 25px;
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+    }
+    .trending {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: $gris-1;
+        padding: 13% 0 20% 0;
+        width: 100%;
+        h3 {
+            font-size: 20px;
+            line-height: 30px;
+            font-weight: 700;
+            color: $violeta;
+        }
+        .trending-p {
+            font-family: $roboto;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 23px;
+            padding: 3% 20%;
+            width: 85%;
+        }
+        .carrusel {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            .gif-home {
+                width: 243px;
+                height: 187px;
+                margin: 0 5%;
+            }
+            #g2 {
+                display: none;
+            }
+            #f2 {
+                display: none;
+            }
+        }
+    }
+}
+
+footer {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    border-bottom: 5px solid $violeta;
+    padding: 5% 0 5%;
+    .compartir {
+        width: 100px;
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        .facebook {
+            display: inline-block;
+            width: 7px;
+            height: 17px;
+            background-image: url(/images/icon_facebook.svg);
+            &:hover {
+                background-image: url(/images/icon_facebook_hover.svg);
+            }
+        }
+        .twitter {
+            display: inline-block;
+            width: 18px;
+            height: 17px;
+            background-image: url(/images/icon-twitter.svg);
+            &:hover {
+                background-image: url(/images/icon-twitter-hover.svg);
+            }
+        }
+        .instagram {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-image: url(/images/icon_instagram.svg);
+            &:hover {
+                background-image: url(/images/icon_instagram-hover.svg);
+            }
+        }
+    }
+    .title {
+        font-family: $roboto;
+        font-size: 15px;
+        line-height: 18px;
+        font-weight: 400;
+        margin: 5% 0 5%;
+    }
+    .sub-title {
+        font-family: $roboto;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        margin: 5% 0 1%;
+    }
+}
