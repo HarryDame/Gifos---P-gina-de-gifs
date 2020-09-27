@@ -18,6 +18,7 @@ async function buscar() {
 
 }
 buscar();
+//Esto es para mostrar un gif
 // async function buscar() {
 //     try {
 //         let request = await (fetch(`https://api.giphy.com/v1/gifs/random?api_key=bPvCCZM88k66UZXoKNKFiP66bA1HCe4B&tag=&rating=g`));
