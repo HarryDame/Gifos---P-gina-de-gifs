@@ -1,17 +1,23 @@
+'use strict';
+
 const apiKey = "bPvCCZM88k66UZXoKNKFiP66bA1HCe4B";
 
 let contAll = document.getElementById("trends");
 
 async function buscar() {
     try {
+        //Hacemos una llamada a la API.
         let request = await (fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`));
+        //Lo parseamos a JSON.
         let response = await request.json();
-        console.log(response);
+        //Creamos un parrafo(p) que va a contener lo que nos devuelve.
         let text = document.createElement('p');
-        text.textContent = response.data[0];
-        contAll.appendChild(n);
-
-
+        //Recortamos el arreglo devuelto con .splice(desde, hasta). 
+        response.data.splice(5, 20);
+        //Al contenido del parrafo que creamos antes le agregamos los arreglos y entre cada arreglo le agregamos una ', '.
+        text.textContent = response.data.join(", ");
+        //Finalmente a nuestro articulo le agreagamos el parrafo.
+        contAll.appendChild(text);
     } catch (error) {
         console.log("Error:", error);
     }

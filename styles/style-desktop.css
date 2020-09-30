@@ -92,12 +92,11 @@ main .home h1 {
   text-align: center;
 }
 
-main .home img {
+main .home .people {
   max-width: 399px;
-  margin-top: 3%;
 }
 
-main .home .search-bar {
+main .home .search-cont {
   width: 551px;
   max-height: 50px;
   display: -webkit-box;
@@ -115,25 +114,25 @@ main .home .search-bar {
           justify-content: space-between;
 }
 
-main .home .search-bar .search {
+main .home .search-cont .search {
   text-align: left;
   width: 100%;
   float: none;
 }
 
-main .home .search-bar .search::-webkit-input-placeholder {
+main .home .search-cont .search::-webkit-input-placeholder {
   color: #9CAFC3;
 }
 
-main .home .search-bar .search:-ms-input-placeholder {
+main .home .search-cont .search:-ms-input-placeholder {
   color: #9CAFC3;
 }
 
-main .home .search-bar .search::-ms-input-placeholder {
+main .home .search-cont .search::-ms-input-placeholder {
   color: #9CAFC3;
 }
 
-main .home .search-bar .search::placeholder {
+main .home .search-cont .search::placeholder {
   color: #9CAFC3;
 }
 

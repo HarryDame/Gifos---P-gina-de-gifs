@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style-mobile.css">
     <link rel="stylesheet" href="styles/style-desktop.css">
+    <link rel="stylesheet" href="styles/gifs.css">
     <title>Gifos - Enrique</title>
 </head>
 
@@ -36,16 +37,33 @@
         <section class="home">
             <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h1>
             <img class="people" src="images/ilustra_header.svg" alt="Felicidad">
-            <div class="search-bar">
-                <input class="search" id="search" type="text" placeholder="Busca GIFOS y más">
+
+
+            <!-- Buscador -->
+
+            <div class="search-cont" id="search-cont">
+                <input class="search" id="search" type="search" placeholder="Busca GIFOS y más">
                 <img src="images/icon-search.svg" alt="Buscar!">
                 <label for="search"></label>
             </div>
-            <article id="trends">
+
+            <article id="trends" class="trends">
                 <h3>Trending:</h3>
                 <p id="trending-p" class="trending-p"></p>
             </article>
         </section>
+
+
+        <!-- Aquí en otra sección esta el resultado de la busqueda -->
+        <!-- Resultado de busqueda -->
+        <section class="gifos">
+            <div id="resultadoGifos" class="resultadoGifos">
+                <div class="resultadoFinal" id="resultadoFinal"></div>
+            </div>
+        </section>
+
+
+
         <!-- Segunda sección -->
         <section class="trending">
             <h3>Trending GIFOS</h3>
@@ -64,6 +82,7 @@
         <p class="sub-title">&copy; GIFOS 2020 All Rights Reserved.</p>
     </footer>
 </body>
-<script src="script/app.js"></script>
+<script src="script/trends.js"></script>
+<script src="script/busqueda.js"></script>
 
 </html>

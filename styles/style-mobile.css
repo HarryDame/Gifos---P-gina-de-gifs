@@ -37,6 +37,7 @@ header .logo {
 }
 
 header img {
+  cursor: pointer;
   margin: 0 1rem;
 }
 
@@ -86,6 +87,7 @@ header input[type="checkbox"]:checked ~ nav ul li:last-child {
 }
 
 header input[type="checkbox"]:checked ~ nav ul li a {
+  cursor: pointer;
   color: white;
   text-decoration: none;
   line-height: 30px;
@@ -164,7 +166,7 @@ main .home h1 span {
   color: #50E3C2;
 }
 
-main .home .search-bar {
+main .home .search-cont {
   border: 1px solid #572EE5;
   border-radius: 250px;
   -webkit-border-radius: 250px;
@@ -178,7 +180,7 @@ main .home .search-bar {
   padding: 3% 4%;
 }
 
-main .home .search-bar .search {
+main .home .search-cont .search {
   border: none;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
@@ -186,23 +188,23 @@ main .home .search-bar .search {
   font-weight: normal;
 }
 
-main .home .search-bar .search::-webkit-input-placeholder {
+main .home .search-cont .search::-webkit-input-placeholder {
   color: #6B7989;
 }
 
-main .home .search-bar .search:-ms-input-placeholder {
+main .home .search-cont .search:-ms-input-placeholder {
   color: #6B7989;
 }
 
-main .home .search-bar .search::-ms-input-placeholder {
+main .home .search-cont .search::-ms-input-placeholder {
   color: #6B7989;
 }
 
-main .home .search-bar .search::placeholder {
+main .home .search-cont .search::placeholder {
   color: #6B7989;
 }
 
-main .home .search-bar img {
+main .home .search-cont img {
   float: right;
 }
 
@@ -218,6 +220,7 @@ main .home .trends h3 {
 }
 
 main .home .trends p {
+  text-transform: capitalize;
   margin: 1% 0;
   color: #572EE5;
   line-height: 25px;
