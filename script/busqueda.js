@@ -4,80 +4,158 @@ let resultadoFinal = document.getElementById('resultadoFinal');
 let resultadoBusqueda = document.getElementById('resultadoGifos');
 let searchInput = document.getElementById('search');
 let searchCont = document.getElementById('search-cont');
-//Iniciamos un evento cada vez que un dedo se levante de una tecla(para mostrar las sugerencias en tiempo real).
+let offSet = 0;
+let contBusqueda = document.getElementById('busqueda');
+let lupaVioleta = document.getElementById('lupa-violeta');
+let cerrar = document.getElementById('cerrar');
+let lupaGris = document.getElementById('lupa-gris');
+let ctnSugerencias = document.getElementById('contAllSugerencias')
+let sugerencia = document.getElementById('sugerenciaCtn');
+let buscadorSugerencia = document.getElementById('buscadorSugerencia');
+let hrInput = document.getElementById('hrInput');
+let tituloBusqueda = document.getElementById('titulo-busqueda');
+let verMasBtn = document.getElementById('verMas');
+let gifosCont = document.getElementById('gifos');
+let ctnLimpiarGifs = document.getElementById("limpiar-gifs");
 searchInput.addEventListener('keyup', buscador);
-//Inicia nuestra funcion buscador.
-function buscador() {
-    // La variable busqueda es ingual al valor del input (lo que estoy ingresando por teclado).
+searchInput.addEventListener('input', mostrarLupaX);
+searchInput.addEventListener('click', mostrarLupaX);
+cerrar.addEventListener('click', limpiarInput);
+lupaGris.addEventListener('click', buscador);
+verMasBtn.addEventListener('click', verMas);
+
+function limpiarResultados() {
+    ctnLimpiarGifs.innerHTML = "<h3>Limpiando resultados...</h3>";
+    setTimeout(() => {
+        resultadoBusqueda.innerHTML = '';
+        ctnLimpiarGifs.innerHTML = "";
+    }, 2000);
+}
+
+function limpiarInput() {
+    searchInput.value = "";
+    lupaGris.style.display = 'none';
+    cerrar.style.display = 'none';
+    lupaVioleta.style.display = 'initial';
+    hrInput.style.display = 'none';
+    buscadorSugerencia.innerHTML = '';
+    // offSet = 0;
+}
+
+function limpiarSugerencias() {
+    lupaGris.style.display = 'none';
+    cerrar.style.display = 'none';
+    lupaVioleta.style.display = 'initial';
+    hrInput.style.display = 'none';
+    buscadorSugerencia.innerHTML = '';
+    // offSet = 0;
+}
+
+
+function mostrarLupaX() {
+    lupaVioleta.style.display = 'none';
+    cerrar.style.display = 'initial';
+    lupaGris.style.display = 'initial';
+}
+
+function buscador(e) {
+    e.preventDefault();
     let busqueda = searchInput.value;
+    offSet = 0;
+
     if (busqueda.length >= 1) {
-        //Si hay mas de una letra comienza a mostrar sugerencias.
-        fetch(`https://api.giphy.com/v1/tags/related/${busqueda}?=&api_key=${apiKey}&limit=4&lang=es`)
+        fetch(`https://api.giphy.com/v1/tags/related/${busqueda}?=&api_key=${apiKey}&lang=es`)
             .then(response => response.json())
             .then(request => sugerenciasData(request))
             .catch(error => console.error("Fallo: ", error));
+    } else if (busqueda == "" || busqueda == null) {
+        verMasBtn.style.display = 'none';
+        limpiarInput();
     }
-    //  else {
-    //     Cambiar estilos para lupa y X
-    // }
 }
-//Nuestra función para mostrar las sugerencias.
+
+function onKeyUp(event) {
+    event.preventDefault();
+    const keycode = event.keyCode;
+    offSet = 0;
+    if (keycode == '13') {
+        if (searchInput.value === "" || searchInput.value === null) {
+            verMasBtn.style.display = 'none';
+            limpiarSugerencias();
+        } else {
+            mostrar();
+        }
+    }
+}
+
 function sugerenciasData(objeto) {
     let sugerencia = objeto.data;
-    //Nos llevamos lo que nos trae el fetch, o sea las sugerencias, y las mostramos una por una (con console.log).
-    console.log(sugerencia[0].name);
-    //mostrar() es otra función para justamente mostrar los gifs de una busqueda.
-    mostrar();
+    buscadorSugerencia.innerHTML = "";
+    for (let i = 0; i < sugerencia.length; i++) {
+        traerSugerencias(sugerencia[i].name);
+    }
 }
-//Cree esta variable por que realmente no me salia el código de Nico, así que cambié varias cosas.
-let obj;
+
+function traerSugerencias(sug) {
+    try {
+        hrInput.style.display = 'initial';
+        let div = document.createElement('div');
+        let p = document.createElement('p');
+        let image = document.createElement('img');
+        div.className = 'sugerenciaCtn';
+        image.setAttribute('src', '/images/icon-search-active.svg');
+        p.textContent = sug;
+        div.appendChild(image);
+        div.appendChild(p);
+        buscadorSugerencia.appendChild(div);
+        div.addEventListener('mouseup', () => {
+            // console.log("NO ANDA");
+            searchInput.value = sug;
+            offSet = 0;
+            mostrar();
+        });
+    } catch (error) {
+        console.log('FALLO, ', error);
+    }
+}
 
 function mostrar() {
-    //Guardamos nuestro url de la consulta con la api para posteriormente hacerle un fetch.
-    let urlBusqueda = (`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=12&offset=0&rating=g&lang=es&q=`);
-    //searchInput recordá que es el mismo input, por lo tanto searchInput.value es lo que ingreses en ese input (.trim() para sacar los espacios).
+    buscadorSugerencia.innerHTML = '';
+    let urlBusqueda = (`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=12&offset=${offSet}&rating=g&lang=es&q=`);
     let strBusqueda = searchInput.value.trim();
-    //¿Viste la url de arriba? bien, le concatenamos (.concat()) lo que queremos buscar.
     urlBusqueda = urlBusqueda.concat(strBusqueda);
-    //Ahora si mandamos la consulta.
     fetch(urlBusqueda)
-        //Lo parseamos a json.
         .then(response => response.json())
-        //Recordemos que cada .then inicia una pequeña arrayFunction(EXPLICO DESPUES DE SER NECESARIO).
         .then(content => {
-            //La variable obj que habia declarado afuera le doy el valor de data, o sea del arreglo con los 12 objetos.
-            obj = content.data;
-            //Realmente no se por que Nico pidio que agregue este innerHTML (LO VEMOS DESPUES).
-            resultadoBusqueda.innerHTML = '';
-            //Este es mi contenedor de los gifs y el la palabra que busqué.
-            let contFinal = document.getElementById('resultadoGifos');
-            //Creo un parrafo para mostrar la palabra que busqué.
-            let titulo = document.createElement('p');
-            //Le pongo como textContent el valor del input.
-            titulo.textContent = searchInput.value;
-            //Lo apendeo en el contenedor.
-            contFinal.appendChild(titulo);
-            //Si no buscamos nada == ERROR
-            if (content.data = 0) {
-                resultadoBusqueda.innerHTML = `<div><img src=""><p>Error</p></div>`
+            console.log("OffSet: " + offSet);
+            if (offSet === 0) {
+                verMasBtn.style.display = 'initial';
+                resultadoBusqueda.innerHTML = '';
+                let contFinal = document.getElementById('resultadoGifos');
+                tituloBusqueda.style.display = 'initial';
+                tituloBusqueda.textContent = searchInput.value;
+                contFinal.appendChild(tituloBusqueda);
             }
-            //else comienza con todo el proceso para mostrar cada gif.
-            else {
-                //Acordate que obj es la varible a donde guardamos el arreglo con los objetos que retorna.
+            let obj = content.data;
+            if (obj == 0 || obj == "" || obj == null || obj == undefined) {
+                verMasBtn.style.display = 'none';
+                ctnLimpiarGifs.innerHTML = `<img src=""><p>No hay mas resultados de -${searchInput.value}-</p><br/><button id="cleanBtn">Limpiar resultados</button>`
+                let c = document.getElementById('cleanBtn');
+                c.addEventListener('click', limpiarResultados);
+            } else {
                 for (let i = 0; i < obj.length; i++) {
-                    //Va a la funcion para mostrarlos por cada objeto que trajo.
                     traerGifs(obj[i]);
                 }
             }
+            limpiarSugerencias();
         }).catch(error => console.error("Fallo:", error));
-
 }
-//Función para mostrarlos, pide un valor para ejecutarse -fijate en el for- le damos como valor obj[i] (SI NO SE ENTIENDE LO VEMOS).
+
 function traerGifs(object) {
-    //Y por cada uno crea un div que contiene un img con el url del gif.
-    resultadoBusqueda.innerHTML += `<div class="gif"><img src="${object.images.fixed_width.url}"></div>` //En este caso usamos 'fixed_width', Nico uso 'downsized' que muestra el gif pero comprobé que tarda mas en traerlos.
+    resultadoBusqueda.innerHTML += `<div class="gif"><img class="imgGif" src="${object.images.fixed_width.url}"><div class="filter"></div><div class="btnGifs"><button class="ctnBtn favorite" id="btnFavorite"><img src="./images/icon-fav.svg"></button><button class="ctnBtn download" id="btnDownload"><img src="./images/icon-download.svg"></button><button class="ctnBtn expand" id="btnExpand"><img src="./images/icon-max-normal.svg"></button></div><div class="namesGifs"><span class="userName">${object.username}</span><h5 class="titleGif">${object.title}</h5></div></div>`
 }
 
-
-// Este código tiene muchas cosas por corregir todavía, cada vez que quieras hacer una consulta recomiendo que recargues la página.
-//Gifs.scss es quien le da los estilos a cada gif y todo el conetendor ese.
+function verMas() {
+    offSet += 12;
+    mostrar();
+}

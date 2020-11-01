@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="styles/style-mobile.css">
     <link rel="stylesheet" href="styles/style-desktop.css">
     <link rel="stylesheet" href="styles/gifs.css">
+    <link rel="stylesheet" href="styles/expand.css">
     <title>Gifos - Enrique</title>
 </head>
 
 <body>
     <header>
         <!-- Logo gifos -->
-        <img class="logo" src="images/LogoMio.png" alt="Logo">
+
+        <a href="index.html" class="logoCtn"><img class="logo" alt="Bob Esponja" src="images/bobEsponja3.gif"></a>
         <!-- Menú hamburguesa -->
         <input type="checkbox" id="checkbox" />
         <label for="checkbox">
@@ -24,7 +26,7 @@
             <!-- Este es nuestro nav abierto -->
             <ul>
                 <li><a href="#modonocturno">Modo Nocturno</a></li>
-                <li><a href="#favoritos">Favoritos</a></li>
+                <li><a href="favoritos.html">Favoritos</a></li>
                 <li><a href="#misgifos">Mis GIFOS</a></li>
                 <li>
                     <a href="#crearGif" class="crear"></a>
@@ -42,34 +44,67 @@
             <!-- Buscador -->
 
             <div class="search-cont" id="search-cont">
-                <input class="search" id="search" type="search" placeholder="Busca GIFOS y más">
-                <img src="images/icon-search.svg" alt="Buscar!">
-                <label for="search"></label>
-            </div>
 
-            <article id="trends" class="trends">
+                <!-- CAMBIO: este div nuevo es quien contiene a nuestro imput y lupa -->
+                <div class="busqueda" id="busqueda">
+                    <img src="images/icon-search-active.svg" alt="Buscar" id="lupa-gris" class="lupa-gris">
+                    <input onkeyup="onKeyUp(event)" class="search" id="search" type="search" placeholder="Busca GIFOS y más">
+                    <img src="images/icon-search.svg" alt="Buscar!" class="lupa-violeta" id="lupa-violeta">
+                    <img src="images/close.svg" alt="Cerrar" id="cerrar" class="cerrar">
+                    <label for="search"></label>
+
+                </div>
+                <hr class="hrInput" id="hrInput">
+                <div class="buscadorSugerencia" id="buscadorSugerencia">
+                </div>
+
+                <!-- Acá es a donde se van apendeando las palabras una arriba de la otra -->
+            </div>
+            <section id="trends" class="trends">
                 <h3>Trending:</h3>
                 <p id="trending-p" class="trending-p"></p>
-            </article>
+            </section>
+            <section class="gifos" id="gifos">
+                <p class="titulo-busqueda" id="titulo-busqueda"></p>
+                <div id="resultadoGifos" class="resultadoGifos"></div>
+
+            </section>
+            <div id="limpiar-gifs"></div>
+            <button class="verMas" id="verMas">Ver Más</button>
+
         </section>
 
 
         <!-- Aquí en otra sección esta el resultado de la busqueda -->
         <!-- Resultado de busqueda -->
-        <section class="gifos">
-            <div id="resultadoGifos" class="resultadoGifos">
-                <div class="resultadoFinal" id="resultadoFinal"></div>
-            </div>
-        </section>
+
 
 
 
         <!-- Segunda sección -->
         <section class="trending">
             <h3>Trending GIFOS</h3>
-            <p>Mira los últimos GIFOS de nuestra comunidad.</p>
-            <div class="carrusel">
+            <p class="trending-p">Mira los últimos GIFOS de nuestra comunidad.</p>
+
+            <div class="contAllCarrusel" id="contAllCarrusel">
+                <div class="ctnSliderLeft">
+                    <img src="images/button-slider-left.svg" id="slider-left" class="slider-left">
+                    <img src="images/button-slider-left-hover.svg" id="slider-left-hover" class="slider-left">
+                </div>
+                <div class="contCarrusel" id="contCarrusel">
+
+
+                    <div class="carrusel" id="carrusel"></div>
+
+
+                </div>
+                <div class="ctnSliderRight">
+                    <img src="images/Button-Slider-right.svg" id="slider-right" class="slider-right">
+                    <img src="images/Button-Slider-right-hover.svg" id="slider-right-hover" class="slider-right">
+                </div>
             </div>
+
+
         </section>
     </main>
     <footer>
