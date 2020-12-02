@@ -6,7 +6,7 @@
   background-color: #ffffff;
   padding: 0 10%;
   padding-bottom: 150px;
-  margin-top: 95px;
+  margin-top: 93px;
   left: 0;
   top: 0;
   overflow: scroll;
@@ -79,5 +79,15 @@
   background-color: unset;
   border: 0;
   cursor: pointer;
+}
+
+.expandActive .ctn-expand-data .expand-data-button .button-download-favorite .fa-heart {
+  color: #572EE5;
+  font-size: 18px;
+}
+
+.expandActive .ctn-expand-data .expand-data-button .button-download-favorite .fa-download {
+  color: #572EE5;
+  font-size: 18px;
 }
 /*# sourceMappingURL=expand.css.map */

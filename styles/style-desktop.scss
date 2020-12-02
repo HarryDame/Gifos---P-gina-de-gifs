@@ -45,10 +45,10 @@
                         font-weight: bold;
                         text-transform: uppercase;
                     }
-                    #navFavoritos {
+                    .navOnclick {
                         color: $gris-desktop;
                     }
-                    .crear {
+                    #crearGifo {
                         width: 54px;
                         height: 54px;
                         display: inline-block;
@@ -146,10 +146,6 @@
                                 height: 100%;
                             }
                             .btnGifs {
-                                display: flex;
-                                position: absolute;
-                                top: 10px;
-                                right: 10px;
                                 display: initial;
                             }
                             .namesGifs {
@@ -162,16 +158,11 @@
                                 width: 90%;
                             }
                         }
-                        .filter {
-                            top: 0;
-                            left: 0;
-                            background-color: $violeta;
-                            opacity: 60%;
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                        }
                         .btnGifs {
+                            display: flex;
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
                             display: none;
                             .ctnBtn {
                                 width: 32px;
@@ -179,31 +170,40 @@
                                 background-color: white;
                                 border-radius: 6px;
                                 border: none;
+                                opacity: 60%;
                             }
                             .favorite {
-                                cursor: pointer;
                                 display: initial;
+                                cursor: pointer;
                                 &:hover {
-                                    background-image: url('/images/icon-fav-hover.svg');
+                                    opacity: unset;
                                 }
-                                &:active {
-                                    background-image: url('/images/icon-fav-active.svg');
+                                .fa-heart {
+                                    color: $violeta;
+                                    font-size: 18px;
                                 }
-                                // #btnFavorite {}
                             }
                             .download {
                                 display: initial;
                                 cursor: pointer;
                                 margin: 0 10px;
                                 &:hover {
-                                    background-image: url('/images/icon-download-hover.svg');
+                                    opacity: unset;
+                                }
+                                .fa-download {
+                                    color: $violeta;
+                                    font-size: 18px;
                                 }
                             }
                             .expand {
                                 display: initial;
                                 cursor: pointer;
                                 &:hover {
-                                    background-image: url('/images/icon-max-hover.svg');
+                                    opacity: unset;
+                                }
+                                .fa-expand-alt {
+                                    color: $violeta;
+                                    font-size: 18px;
                                 }
                             }
                         }
@@ -341,16 +341,25 @@
                                     border-radius: 6px;
                                     border: none;
                                     opacity: 60%;
+                                    outline: none;
+                                }
+                                .fa-heart {
+                                    color: $violeta;
+                                    font-size: 18px;
+                                }
+                                .fa-download {
+                                    color: $violeta;
+                                    font-size: 18px;
+                                }
+                                .fa-expand-alt {
+                                    color: $violeta;
+                                    font-size: 18px;
                                 }
                                 .favorite {
                                     display: initial;
                                     cursor: pointer;
                                     &:hover {
                                         opacity: unset;
-                                        background-image: url('/images/icon-fav-hover.svg');
-                                    }
-                                    &:active {
-                                        background-image: url('/images/icon-fav-active.svg');
                                     }
                                 }
                                 .download {
@@ -359,7 +368,6 @@
                                     margin: 0 10px;
                                     &:hover {
                                         opacity: unset;
-                                        background-image: url('/images/icon-download-hover.svg');
                                     }
                                 }
                                 .expand {
@@ -367,7 +375,6 @@
                                     cursor: pointer;
                                     &:hover {
                                         opacity: unset;
-                                        background-image: url('/images/icon-max-hover.svg');
                                     }
                                 }
                             }

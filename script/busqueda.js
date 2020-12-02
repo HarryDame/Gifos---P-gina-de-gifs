@@ -24,13 +24,6 @@ cerrar.addEventListener('click', limpiarInput);
 lupaGris.addEventListener('click', buscador);
 verMasBtn.addEventListener('click', verMas);
 
-function limpiarResultados() {
-    ctnLimpiarGifs.innerHTML = "<h3>Limpiando resultados...</h3>";
-    setTimeout(() => {
-        resultadoBusqueda.innerHTML = '';
-        ctnLimpiarGifs.innerHTML = "";
-    }, 2000);
-}
 
 function limpiarInput() {
     searchInput.value = "";
@@ -39,7 +32,6 @@ function limpiarInput() {
     lupaVioleta.style.display = 'initial';
     hrInput.style.display = 'none';
     buscadorSugerencia.innerHTML = '';
-    // offSet = 0;
 }
 
 function limpiarSugerencias() {
@@ -48,7 +40,6 @@ function limpiarSugerencias() {
     lupaVioleta.style.display = 'initial';
     hrInput.style.display = 'none';
     buscadorSugerencia.innerHTML = '';
-    // offSet = 0;
 }
 
 
@@ -62,7 +53,6 @@ function buscador(e) {
     e.preventDefault();
     let busqueda = searchInput.value;
     offSet = 0;
-
     if (busqueda.length >= 1) {
         fetch(`https://api.giphy.com/v1/tags/related/${busqueda}?=&api_key=${apiKey}&lang=es`)
             .then(response => response.json())
@@ -72,6 +62,12 @@ function buscador(e) {
         verMasBtn.style.display = 'none';
         limpiarInput();
     }
+}
+
+function buscadorTrends(e) {
+    searchInput.value = e;
+    offSet = 0;
+    mostrar();
 }
 
 function onKeyUp(event) {
@@ -109,7 +105,6 @@ function traerSugerencias(sug) {
         div.appendChild(p);
         buscadorSugerencia.appendChild(div);
         div.addEventListener('mouseup', () => {
-            // console.log("NO ANDA");
             searchInput.value = sug;
             offSet = 0;
             mostrar();
@@ -139,9 +134,7 @@ function mostrar() {
             let obj = content.data;
             if (obj == 0 || obj == "" || obj == null || obj == undefined) {
                 verMasBtn.style.display = 'none';
-                ctnLimpiarGifs.innerHTML = `<img src=""><p>No hay mas resultados de -${searchInput.value}-</p><br/><button id="cleanBtn">Limpiar resultados</button>`
-                let c = document.getElementById('cleanBtn');
-                c.addEventListener('click', limpiarResultados);
+                ctnLimpiarGifs.innerHTML = `<img src="/images/icon-busqueda-sin-resultado.svg"><p class="unlucky">Intenta con otra búsqueda</p>`
             } else {
                 for (let i = 0; i < obj.length; i++) {
                     traerGifs(obj[i]);
@@ -152,7 +145,17 @@ function mostrar() {
 }
 
 function traerGifs(object) {
-    resultadoBusqueda.innerHTML += `<div class="gif"><img class="imgGif" src="${object.images.fixed_width.url}"><div class="filter"></div><div class="btnGifs"><button class="ctnBtn favorite" id="btnFavorite"><img src="./images/icon-fav.svg"></button><button class="ctnBtn download" id="btnDownload"><img src="./images/icon-download.svg"></button><button class="ctnBtn expand" id="btnExpand"><img src="./images/icon-max-normal.svg"></button></div><div class="namesGifs"><span class="userName">${object.username}</span><h5 class="titleGif">${object.title}</h5></div></div>`
+    console.log(object);
+    resultadoBusqueda.innerHTML += `
+    <div class="gif" onclick="expandGifMobile('${object.images.downsized.url}','${object.id}','${object.username}','${object.title}')">
+    <img class="imgGif" src="${object.images.downsized.url}" id="gif-id-${object.id}" alt="${object.title}">
+    <div class="filter"></div>
+    <div class="btnGifs">
+    <button class="ctnBtn favorite" onclick="addLocalStorage('${object.id}')"><i id="btnFavorite-${object.id}" class="far fa-heart"></i></button>
+    <button class="ctnBtn download" onclick="activeDownload('${object.images.downsized.url}', '${object.title}')"><i class="fas fa-download" id="btnDownload"></i></button>
+    <button class="ctnBtn expand" onclick="expandGifDesktop('${object.images.downsized.url}','${object.id}','${object.username}','${object.title}')"><i class="fas fa-expand-alt" id="btnExpand"></i></button>
+    </div>
+    <div class="namesGifs"><span class="userName">${object.username}</span><h5 class="titleGif">${object.title}</h5></div></div>`
 }
 
 function verMas() {

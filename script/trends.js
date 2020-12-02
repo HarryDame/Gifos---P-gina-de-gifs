@@ -10,9 +10,13 @@ const prevBtn1 = document.getElementById('slider-left-hover');
 const nextBtn1 = document.getElementById('slider-right-hover');
 const downloadBtn = document.getElementById('btnDownload');
 const expandBtn = document.getElementById('btnExpand');
+const ctnFavoritos = document.getElementById('ctnFavoritos');
+const noFavorites = document.getElementById('no-favorites');
+const favorite = document.getElementById('favoritos');
 let modalCtn = document.createElement("div");
+
 traerTrendingGifos();
-traerTrending();
+
 
 nextBtn.addEventListener('click', () => {
     contCarrusel.scrollLeft += 400;
@@ -31,42 +35,139 @@ prevBtn1.addEventListener('click', () => {
 
 });
 
-function activeFavorite(id, img, title, username) {
-    let favoriteBtn = document.getElementById('btnFavorite-' + id);
 
-    if (favoriteBtn.className != "favActive") {
-        favoriteBtn.setAttribute('src', './images/icon-fav-active.svg');
-        favoriteBtn.className = "favActive";
-        //TODO ESTO es una prueba para el localStorage.
-        localStorage.setItem(title, img);
-        const ctnFav = document.getElementById('ctnFavoritos');
-        let h1 = document.createElement('img');
-        h1.setAttribute('src', localStorage.getItem('Struggling Mental Health GIF by YouTube'));
-        ctnFav.appendChild(h1);
+if (window.location.pathname == '/index.html') {
+    traerTrending();
+}
+if (window.location.pathname == '/favoritos.html') {
+    let ids = new Array();
+    ids = localStorage.getItem("IDs").split(",");
+    if (
+        ids.length > 0
+    ) {
+        ctnFavoritos.innerHTML = '';
+        ids.forEach(e => {
+            traerFavoritos(e);
+        });
     } else {
-        favoriteBtn.setAttribute('src', './images/icon-fav.svg');
-        favoriteBtn.className = "favInactive";
+        ctnFavoritos.innerHTML = `<div class="no-cont" id="no-favorites">
+        <img src="images/icon-fav-sin-contenido.svg" alt="no-favorites">
+        <p class="unlucky">"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"</p>
+    </div>`
+    }
+}
+
+favorite && favorite.addEventListener('click', e => {
+    e.preventDefault();
+    window.location.href = `favoritos.html#${e.path[0].id}`;
+});
+
+
+function addLocalStorage(id) {
+    let favoriteBtn = document.getElementById('btnFavorite-' + id);
+    try {
+        if (favoriteBtn.className != "fas fa-heart") {
+            favoriteBtn.className = "fas fa-heart";
+        } else {
+            favoriteBtn.className = "far fa-heart";
+        }
+        if (
+            localStorage.getItem("IDs") < 1
+        ) {
+            favoriteBtn.className = "fas fa-heart";
+            localStorage.setItem("IDs", id);
+            if (window.location.hash[0] == '#' && window.location.hash.slice(1) == "favoritos") {
+                noFavorites.style.display = "initial";
+            }
+        } else if (
+            localStorage.getItem("IDs") === null ||
+            localStorage.getItem("IDs") === undefined ||
+            localStorage.getItem("IDs") === ""
+        ) {
+            favoriteBtn.className = "fas fa-heart";
+            if (window.location.hash[0] == '#' && window.location.hash.slice(1) == "favoritos") {
+                noFavorites.style.display = "initial";
+            }
+        } else {
+            if (window.location.hash[0] == '#' && window.location.hash.slice(1) == "favoritos") {
+                noFavorites.style.display = "none";
+            }
+            let ids = new Array();
+            ids = localStorage.getItem("IDs").split(",");
+            if (ids.includes(id)) {
+                let deleteId = ids.findIndex((e) => e === id);
+                ids.splice(deleteId, 1);
+                ids = ids.join(",");
+                localStorage.setItem("IDs", ids);
+                favoriteBtn.className = "far fa-heart";
+            } else {
+                ids.push(id);
+                ids = ids.join(",");
+                localStorage.setItem("IDs", ids);
+                favoriteBtn.className = "fas fa-heart";
+            }
+        }
+    } catch (error) {
+        console.log("Ops! " + error);
+    }
+}
+
+function ejecutaFavoritos() {
+    // ctnFavoritos.innerHTML = '';
+    let allId = JSON.parse(localStorage.getItem('IDs'));
+    allId.forEach(e => {
+        console.log(e);
+    });
+}
+async function traerFavoritos(id) {
+    try {
+        let request = await (fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=${apiKey}`));
+        let response = await request.json();
+        mostrarFavoritos(response.data);
+
+    } catch (error) {
+        console.error(error);
     }
 
-
 }
+
+function mostrarFavoritos(object) {
+    ctnFavoritos.innerHTML += `
+    <div class="gif" onclick="expandGifMobile('${object.images.downsized.url}','${object.id}','${object.username}','${object.title}')">
+    <img class="imgGif" src="${object.images.downsized.url}" id="gif-id-${object.id}" alt="${object.title}">
+    <div class="filter"></div>
+    <div class="btnGifs">
+    <button class="ctnBtn favorite" onclick="addLocalStorage('${object.id}')"><i id="btnFavorite-${object.id}" class="far fa-heart"></i></button>
+    <button class="ctnBtn download" onclick="activeDownload('${object.images.downsized.url}', '${object.title}')"><i class="fas fa-download" id="btnDownload"></i></button>
+    <button class="ctnBtn expand" onclick="expandGifDesktop('${object.images.downsized.url}','${object.id}','${object.username}','${object.title}')"><i class="fas fa-expand-alt" id="btnExpand"></i></button>
+    </div>
+    <div class="namesGifs"><span class="userName">${object.username}</span><h5 class="titleGif">${object.title}</h5></div></div>`
+
+};
+
 async function traerTrending() {
     try {
         let request = await (fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`));
         let response = await request.json();
-        let text = document.createElement('p');
-        response.data.splice(5, 20);
-        text.textContent = response.data.join(", ");
-        trendsCont.appendChild(text);
-        console.log("Excelente");
+        let data = response.data;
+        // buscadorTrends(data[0]);
+        trendsCont.innerHTML += `
+        <span class="trendText">${data[0]}</span>, <span class="trendText">${data[1]}</span>, <span class="trendText">${data[2]}</span>, <span class="trendText">${data[3]}</span>, <span class="trendText">${data[4]}</span>
+        `
+        let allTopics = document.getElementsByClassName("trendText");
+        for (let i = 0; i < allTopics.length; i++) {
+            allTopics[i].addEventListener("click", () => {
+                buscadorTrends(data[i]);
+            });
+        }
     } catch (error) {
         console.log("Error:", error);
     }
-
 }
+
 async function traerTrendingGifos() {
     try {
-        let request = await (fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=14&rating=g`));
+        let request = await (fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=16&rating=g`));
         let response = await request.json();
         mostrarTrendingGifos.innerHTML = '';
         for (let i = 0; i < response.data.length; i++) {
@@ -83,15 +184,9 @@ async function activeDownload(url, name) {
     // get image as blob
     let response = await fetch(url);
     let file = await response.blob();
-    // use download attribute https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#Attributes
     a.download = name;
     a.href = window.URL.createObjectURL(file);
-    //store download url in javascript https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes#JavaScript_access
     a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
-    //click on element to start download
-
-
-
     a.click();
 };
 
@@ -100,6 +195,7 @@ function cerrarModalCtn() {
 }
 
 function expandGifDesktop(image, id, userName, title) {
+
     if (window.matchMedia("(min-width: 1023px)").matches) {
         modalCtn.style.display = 'block';
         modalCtn.innerHTML = `
@@ -111,8 +207,8 @@ function expandGifDesktop(image, id, userName, title) {
                 <p class="text-title">${title}</p>
             </div>
             <div class="expand-data-button">
-                <button class="button-download-favorite" onclick="activeFavorite('${id}', '${image}', '${title}', '${userName}')"><img src="./images/icon-fav.svg" id="btnFavorite-${id}"></button>
-                <button class="button-download-favorite" onclick="activeDownload('${image}', '${title}')"><img src="./images/icon-download.svg" id="btnDownload"></button>
+                <button class="button-download-favorite" onclick="addLocalStorage('${id}')"><i id="btnFavorite-${id}" class="far fa-heart"></i></button>
+                <button class="button-download-favorite" onclick="activeDownload('${image}', '${title}')"><i class="fas fa-download" id="btnDownload"></i></button>
             </div>
         </div>
   
@@ -134,8 +230,8 @@ function expandGifMobile(image, id, userName, title) {
                 <p class="text-title">${title}</p>
             </div>
             <div class="expand-data-button">
-                <button class="button-download-favorite" onclick="activeFavorite('${id}', '${image}', '${title}', '${userName}')"><img src="./images/icon-fav.svg" id="btnFavorite-${id}"></button>
-                <button class="button-download-favorite" onclick="activeDownload('${image}', '${title}')"><img src="./images/icon-download.svg" id="btnDownload"></button>
+                <button class="button-download-favorite" onclick="addLocalStorage('${id}', '${image}', '${title}', '${userName}')"><i id="btnFavorite-${id}" class="far fa-heart"></i></button>
+                <button class="button-download-favorite" onclick="activeDownload('${image}', '${title}')"><i class="fas fa-download" id="btnDownload"></i></button>
             </div>
         </div>
   
@@ -146,15 +242,14 @@ function expandGifMobile(image, id, userName, title) {
 }
 
 function mostrarTrendingGifos(object) {
-    console.log(object);
     trendingCont.innerHTML += `
     <div class="gif" onclick="expandGifMobile('${object.images.downsized.url}','${object.id}','${object.username}','${object.title}')">
     <img class="imgGif" src="${object.images.downsized.url}" id="gif-id-${object.id}" alt="${object.title}">
     <div class="filter"></div>
     <div class="btnGifs">
-    <button class="ctnBtn favorite" onclick="activeFavorite('${object.id}', '${object.images.downsized.url}', '${object.title}', '${object.username}')"><img src="./images/icon-fav.svg" id="btnFavorite-${object.id}"></button>
-    <button class="ctnBtn download" onclick="activeDownload('${object.images.downsized.url}', '${object.title}')"><img src="./images/icon-download.svg" id="btnDownload"></button>
-    <button class="ctnBtn expand" onclick="expandGifDesktop('${object.images.downsized.url}','${object.id}','${object.username}','${object.title}')"><img src="./images/icon-max-normal.svg" id="btnExpand"></button>
+    <button class="ctnBtn favorite" onclick="addLocalStorage('${object.id}')"><i id="btnFavorite-${object.id}" class="far fa-heart"></i></button>
+    <button class="ctnBtn download" onclick="activeDownload('${object.images.downsized.url}', '${object.title}')"><i class="fas fa-download" id="btnDownload"></i></button>
+    <button class="ctnBtn expand" onclick="expandGifDesktop('${object.images.downsized.url}','${object.id}','${object.username}','${object.title}')"><i class="fas fa-expand-alt" id="btnExpand"></i></button>
     </div>
     <div class="namesGifs"><span class="userName">${object.username}</span><h5 class="titleGif">${object.title}</h5></div></div>`
 

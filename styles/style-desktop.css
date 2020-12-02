@@ -62,19 +62,19 @@
     font-weight: bold;
     text-transform: uppercase;
   }
-  header nav ul li #navFavoritos {
+  header nav ul li .navOnclick {
     color: #9CAFC3;
   }
-  header nav ul li .crear {
+  header nav ul li #crearGifo {
     width: 54px;
     height: 54px;
     display: inline-block;
     background-image: url(/images/button-crear-gifo.svg);
   }
-  header nav ul li .crear:hover {
+  header nav ul li #crearGifo:hover {
     background-image: url(/images/CTA-crear-gifo-hover.svg);
   }
-  header nav ul li .crear:active {
+  header nav ul li #crearGifo:active {
     background-image: url(/images/CTA-crear-gifo-active.svg);
   }
   header nav ul li:hover {
@@ -183,12 +183,6 @@
     height: 100%;
   }
   main .home .gifos .resultadoGifos .gif:hover .btnGifs {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    position: absolute;
-    top: 10px;
-    right: 10px;
     display: initial;
   }
   main .home .gifos .resultadoGifos .gif:hover .namesGifs {
@@ -205,16 +199,13 @@
             flex-direction: column;
     width: 90%;
   }
-  main .home .gifos .resultadoGifos .gif .filter {
-    top: 0;
-    left: 0;
-    background-color: #572EE5;
-    opacity: 60%;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
   main .home .gifos .resultadoGifos .gif .btnGifs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 10px;
     display: none;
   }
   main .home .gifos .resultadoGifos .gif .btnGifs .ctnBtn {
@@ -223,16 +214,18 @@
     background-color: white;
     border-radius: 6px;
     border: none;
+    opacity: 60%;
   }
   main .home .gifos .resultadoGifos .gif .btnGifs .favorite {
-    cursor: pointer;
     display: initial;
+    cursor: pointer;
   }
   main .home .gifos .resultadoGifos .gif .btnGifs .favorite:hover {
-    background-image: url("/images/icon-fav-hover.svg");
+    opacity: unset;
   }
-  main .home .gifos .resultadoGifos .gif .btnGifs .favorite:active {
-    background-image: url("/images/icon-fav-active.svg");
+  main .home .gifos .resultadoGifos .gif .btnGifs .favorite .fa-heart {
+    color: #572EE5;
+    font-size: 18px;
   }
   main .home .gifos .resultadoGifos .gif .btnGifs .download {
     display: initial;
@@ -240,14 +233,22 @@
     margin: 0 10px;
   }
   main .home .gifos .resultadoGifos .gif .btnGifs .download:hover {
-    background-image: url("/images/icon-download-hover.svg");
+    opacity: unset;
+  }
+  main .home .gifos .resultadoGifos .gif .btnGifs .download .fa-download {
+    color: #572EE5;
+    font-size: 18px;
   }
   main .home .gifos .resultadoGifos .gif .btnGifs .expand {
     display: initial;
     cursor: pointer;
   }
   main .home .gifos .resultadoGifos .gif .btnGifs .expand:hover {
-    background-image: url("/images/icon-max-hover.svg");
+    opacity: unset;
+  }
+  main .home .gifos .resultadoGifos .gif .btnGifs .expand .fa-expand-alt {
+    color: #572EE5;
+    font-size: 18px;
   }
   main .home .gifos .resultadoGifos .gif .namesGifs {
     display: none;
@@ -383,6 +384,19 @@
     border-radius: 6px;
     border: none;
     opacity: 60%;
+    outline: none;
+  }
+  main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .fa-heart {
+    color: #572EE5;
+    font-size: 18px;
+  }
+  main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .fa-download {
+    color: #572EE5;
+    font-size: 18px;
+  }
+  main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .fa-expand-alt {
+    color: #572EE5;
+    font-size: 18px;
   }
   main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .favorite {
     display: initial;
@@ -390,10 +404,6 @@
   }
   main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .favorite:hover {
     opacity: unset;
-    background-image: url("/images/icon-fav-hover.svg");
-  }
-  main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .favorite:active {
-    background-image: url("/images/icon-fav-active.svg");
   }
   main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .download {
     display: initial;
@@ -402,7 +412,6 @@
   }
   main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .download:hover {
     opacity: unset;
-    background-image: url("/images/icon-download-hover.svg");
   }
   main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .expand {
     display: initial;
@@ -410,7 +419,6 @@
   }
   main .trending .contAllCarrusel .contCarrusel .carrusel .gif .btnGifs .expand:hover {
     opacity: unset;
-    background-image: url("/images/icon-max-hover.svg");
   }
   main .trending .contAllCarrusel .contCarrusel .carrusel .gif .namesGifs {
     display: none;

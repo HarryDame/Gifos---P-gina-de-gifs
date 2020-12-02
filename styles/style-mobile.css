@@ -135,7 +135,7 @@ main {
   margin-top: 95px;
 }
 
-main .verMas {
+main .allBtn {
   width: 127px;
   height: 50px;
   color: #572EE5;
@@ -150,7 +150,7 @@ main .verMas {
   cursor: pointer;
 }
 
-main .verMas:hover {
+main .allBtn:hover {
   background-color: #572EE5;
   color: white;
 }
@@ -174,6 +174,47 @@ main .home {
   -ms-flex-line-pack: center;
       align-content: center;
   width: 100%;
+}
+
+main .home #video {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 500;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+main .home .unlucky {
+  font-size: 22px;
+  color: #50E3C2;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+
+main .home .icon-section {
+  width: 28px;
+  height: 21px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+main .home .no-cont {
+  padding: 90px 0;
+  margin: 0 auto;
+  width: 440px;
+}
+
+main .home .no-cont img {
+  margin-bottom: 30px;
 }
 
 main .home h1 {
@@ -393,22 +434,24 @@ main .home .gifos .resultadoGifos .gif .filter {
 }
 
 main .home .gifos .resultadoGifos .gif .btnGifs {
+  z-index: 200;
   display: none;
 }
 
-main .home .gifos .resultadoGifos .gif .btnGifs .btnFavorite {
+main .home .gifos .resultadoGifos .gif .btnGifs .favorite {
   display: none;
 }
 
-main .home .gifos .resultadoGifos .gif .btnGifs .btnDowloado {
+main .home .gifos .resultadoGifos .gif .btnGifs .dowload {
   display: none;
 }
 
-main .home .gifos .resultadoGifos .gif .btnGifs .btnExpand {
+main .home .gifos .resultadoGifos .gif .btnGifs .expand {
   display: none;
 }
 
 main .home .gifos .resultadoGifos .gif .namesGifs {
+  z-index: 200;
   display: none;
 }
 

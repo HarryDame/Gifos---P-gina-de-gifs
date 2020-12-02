@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="styles/gifs.css">
     <link rel="stylesheet" href="styles/expand.css">
     <title>Gifos - Enrique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 </head>
 
 <body>
     <header>
         <!-- Logo gifos -->
-
-        <a href="index.html" class="logoCtn"><img class="logo" alt="Bob Esponja" src="images/bobEsponja3.gif"></a>
+        <a href="index.html" class="logoCtn"><img class="logo" alt="Bob Esponja" src="images/bobEsponja2.gif"></a>
         <!-- Menú hamburguesa -->
         <input type="checkbox" id="checkbox" />
         <label for="checkbox">
@@ -26,10 +26,10 @@
             <!-- Este es nuestro nav abierto -->
             <ul>
                 <li><a href="#modonocturno">Modo Nocturno</a></li>
-                <li><a href="favoritos.html">Favoritos</a></li>
-                <li><a href="#misgifos">Mis GIFOS</a></li>
+                <li><a id="favoritos" href="favoritos.html">Favoritos</a></li>
+                <li><a href="misGifos.html">Mis GIFOS</a></li>
                 <li>
-                    <a href="#crearGif" class="crear"></a>
+                    <a href="favoritos.html" onclick="crearGifo()" id="crearGifo"></a>
                 </li>
             </ul>
         </nav>
@@ -39,16 +39,13 @@
         <section class="home">
             <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h1>
             <img class="people" src="images/ilustra_header.svg" alt="Felicidad">
-
-
             <!-- Buscador -->
-
             <div class="search-cont" id="search-cont">
 
                 <!-- CAMBIO: este div nuevo es quien contiene a nuestro imput y lupa -->
                 <div class="busqueda" id="busqueda">
                     <img src="images/icon-search-active.svg" alt="Buscar" id="lupa-gris" class="lupa-gris">
-                    <input onkeyup="onKeyUp(event)" class="search" id="search" type="search" placeholder="Busca GIFOS y más">
+                    <input autocomplete="off" onkeyup="onKeyUp(event)" class="search" id="search" type="search" placeholder="Busca GIFOS y más">
                     <img src="images/icon-search.svg" alt="Buscar!" class="lupa-violeta" id="lupa-violeta">
                     <img src="images/close.svg" alt="Cerrar" id="cerrar" class="cerrar">
                     <label for="search"></label>
@@ -60,9 +57,9 @@
 
                 <!-- Acá es a donde se van apendeando las palabras una arriba de la otra -->
             </div>
-            <section id="trends" class="trends">
+            <section class="trends">
                 <h3>Trending:</h3>
-                <p id="trending-p" class="trending-p"></p>
+                <p id="trends" class="trending-p"></p>
             </section>
             <section class="gifos" id="gifos">
                 <p class="titulo-busqueda" id="titulo-busqueda"></p>
@@ -70,7 +67,7 @@
 
             </section>
             <div id="limpiar-gifs"></div>
-            <button class="verMas" id="verMas">Ver Más</button>
+            <button class="allBtn" id="verMas">Ver Más</button>
 
         </section>
 
@@ -97,6 +94,8 @@
                     <div class="carrusel" id="carrusel"></div>
 
 
+
+
                 </div>
                 <div class="ctnSliderRight">
                     <img src="images/Button-Slider-right.svg" id="slider-right" class="slider-right">
@@ -119,5 +118,6 @@
 </body>
 <script src="script/trends.js"></script>
 <script src="script/busqueda.js"></script>
+
 
 </html>
