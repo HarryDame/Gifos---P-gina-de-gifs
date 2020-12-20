@@ -65,6 +65,12 @@
   header nav ul li .navOnclick {
     color: #9CAFC3;
   }
+  header nav ul li .navOnclickGifo {
+    width: 54px;
+    height: 54px;
+    display: inline-block;
+    background-image: url(/images/CTA-crear-gifo-active.svg);
+  }
   header nav ul li #crearGifo {
     width: 54px;
     height: 54px;
@@ -227,6 +233,10 @@
     color: #572EE5;
     font-size: 18px;
   }
+  main .home .gifos .resultadoGifos .gif .btnGifs .favorite .fa-trash-alt {
+    color: #572EE5;
+    font-size: 18px;
+  }
   main .home .gifos .resultadoGifos .gif .btnGifs .download {
     display: initial;
     cursor: pointer;
@@ -279,6 +289,10 @@
   }
   main .home .trends p {
     font-size: 16px;
+    cursor: pointer;
+  }
+  main .home .trends p:hover {
+    color: #a80ba8;
   }
   main .trending {
     width: 100%;
@@ -443,6 +457,231 @@
     margin-top: 5px;
     color: #ffffff;
     text-align: left;
+  }
+  main .crearGifoBtn {
+    color: #572EE5;
+    border: solid 1px #572EE5;
+    border-radius: 25px;
+    background: transparent;
+    font-weight: 600;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    cursor: pointer;
+  }
+  main .crearGifoBtn:hover {
+    background-color: #572EE5;
+    color: white;
+  }
+  main #start {
+    display: initial;
+    width: 127px;
+    height: 50px;
+  }
+  main #record {
+    display: none;
+    width: 127px;
+    height: 50px;
+  }
+  main #finish {
+    display: none;
+    width: 127px;
+    height: 50px;
+  }
+  main #upload {
+    display: none;
+    width: 127px;
+    height: 50px;
+  }
+  main .homeCrearGifo {
+    width: 100%;
+    height: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  main .homeCrearGifo .cameraCtn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -ms-flex-item-align: center;
+        align-self: center;
+    left: 60px;
+  }
+  main .homeCrearGifo .cameraCtn .light {
+    position: relative;
+    top: 3px;
+    opacity: 60%;
+  }
+  main .homeCrearGifo .roll {
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+  main .homeCrearGifo .crearGifoCtn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+    border-bottom: 5px solid #572EE5;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  main .homeCrearGifo .crearGifoCtn .white-p {
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    line-height: 19px;
+    color: #ffffff;
+    font-weight: 800;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn {
+    margin: 0 auto;
+    width: 688px;
+    height: 390px;
+    border: 1px solid #572EE5;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn h1 {
+    padding-top: 20px;
+    margin: 0 auto;
+    font-size: 25px;
+    width: 60%;
+    color: #572EE5;
+    font-weight: bold;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    line-height: 35px;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn h1 span {
+    color: #50E3C2;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn p {
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    line-height: 29px;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .step {
+    width: 30px;
+    height: 30px;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .steps {
+    margin: 0 auto;
+    width: 35%;
+    padding-right: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    padding-top: 24px;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .counter {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    color: #572EE5;
+    right: 240px;
+    bottom: 55px;
+    position: absolute;
+    cursor: pointer;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .counter:hover {
+    border-bottom: 2px solid #50E3C2;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle {
+    width: 100%;
+    height: 100%;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .loadingModal {
+    background-color: rgba(87, 46, 229, 0.7);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    z-index: 500;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .loadingModal .loader {
+    -webkit-animation: spin 1s infinite linear;
+            animation: spin 1s infinite linear;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .videoCtn {
+    margin: 0 auto;
+    width: 90%;
+    height: 80%;
+    position: relative;
+    bottom: 65px;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .videoCtn #video {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .introVideo {
+    width: 100%;
+    height: 100%;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .accessCtn {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    bottom: 310px;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .top-left-cube {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    width: 27px;
+    height: 25px;
+    border-top: 1px solid #50E3C2;
+    border-left: 1px solid #50E3C2;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .top-right-cube {
+    position: relative;
+    left: 638px;
+    bottom: 5px;
+    width: 27px;
+    height: 25px;
+    border-top: 1px solid #50E3C2;
+    border-right: 1px solid #50E3C2;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .lower-left-cube {
+    position: relative;
+    top: 290px;
+    left: 20px;
+    width: 27px;
+    height: 25px;
+    border-bottom: 1px solid #50E3C2;
+    border-left: 1px solid #50E3C2;
+  }
+  main .homeCrearGifo .crearGifoCtn .progressCtn .crearGifoArticle .lower-right-cube {
+    position: relative;
+    left: 638px;
+    top: 265px;
+    width: 27px;
+    height: 25px;
+    border-bottom: 1px solid #50E3C2;
+    border-right: 1px solid #50E3C2;
   }
   footer {
     display: -webkit-box;

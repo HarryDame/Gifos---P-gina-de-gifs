@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles/style-mobile.css">
     <link rel="stylesheet" href="styles/style-desktop.css">
     <link rel="stylesheet" href="styles/gifs.css">
-    <title>Gifos - Enrique</title>
+    <link rel="stylesheet" href="styles/expand.css">
+    <title>Gifs creados</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 </head>
 
@@ -28,7 +29,7 @@
                 <li><a href="favoritos.html">Favoritos</a></li>
                 <li><a class="navOnclick" href="misGifos.html">Mis GIFOS</a></li>
                 <li>
-                    <a id="crearGifo"></a>
+                    <a href="crearGifo.html" id="crearGifo"></a>
                 </li>
             </ul>
         </nav>
@@ -39,15 +40,9 @@
             <!-- Buscador -->
             <img class="icon-section" src="images/icon-mis-gifos.svg" alt="mis-gifos">
             <h1>Mis GIFOS</h1>
-
-            <div class="ctnGifos " id="ctnGifos ">
-                <video class="video" id="video" autoplay></video>
-                <h1 id="h1Gifo"></h1>
-                <button id="accion">Acción</button>
-            </div>
-            <div class="no-cont" id="no-gifos">
-                <img src="images/icon-mis-gifos-sin-contenido.svg" alt="no-gifos">
-                <p class="unlucky">¡Anímate a crear tu propio GIFO!</p>
+            <div class="gifos">
+                <div class="resultadoGifos" id="ctnGifos">
+                </div>
             </div>
 
             <!-- Segunda sección -->
@@ -86,7 +81,7 @@
         <p class="sub-title">&copy; GIFOS 2020 All Rights Reserved.</p>
     </footer>
 </body>
-<script src="script/trends.js"></script>
-<script src="script/crear-gifo.js" async></script>
+<script src="script/fav-sliders-trends.js"></script>
+<script src="script/misGifos.js"></script>
 
 </html>

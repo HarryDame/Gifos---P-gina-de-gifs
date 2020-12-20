@@ -136,6 +136,7 @@ main {
 }
 
 main .allBtn {
+  display: none;
   width: 127px;
   height: 50px;
   color: #572EE5;
@@ -146,7 +147,6 @@ main .allBtn {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  display: none;
   cursor: pointer;
 }
 

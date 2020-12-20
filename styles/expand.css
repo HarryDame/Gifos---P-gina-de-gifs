@@ -86,6 +86,11 @@
   font-size: 18px;
 }
 
+.expandActive .ctn-expand-data .expand-data-button .button-download-favorite .fa-trash-alt {
+  color: #572EE5;
+  font-size: 18px;
+}
+
 .expandActive .ctn-expand-data .expand-data-button .button-download-favorite .fa-download {
   color: #572EE5;
   font-size: 18px;

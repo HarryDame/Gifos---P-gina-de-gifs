@@ -41,19 +41,26 @@ if (window.location.pathname == '/index.html') {
 }
 if (window.location.pathname == '/favoritos.html') {
     let ids = new Array();
-    ids = localStorage.getItem("IDs").split(",");
-    if (
-        ids.length > 0
-    ) {
-        ctnFavoritos.innerHTML = '';
-        ids.forEach(e => {
-            traerFavoritos(e);
-        });
-    } else {
+    ids = localStorage.getItem("IDs");
+    if (ids === null || ids.length <= 0) {
         ctnFavoritos.innerHTML = `<div class="no-cont" id="no-favorites">
         <img src="images/icon-fav-sin-contenido.svg" alt="no-favorites">
         <p class="unlucky">"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"</p>
     </div>`
+    } else if (ids.length > 1) {
+        ids = localStorage.getItem("IDs").split(",");
+        ctnFavoritos.innerHTML = '';
+        ids.forEach(e => {
+            traerFavoritos(e);
+        });
+        console.log(ids.length);
+    } else if (ids.length === 1) {
+        ids = localStorage.getItem("IDs");
+        ctnFavoritos.innerHTML = '';
+        ids.forEach(e => {
+            traerFavoritos(e);
+        });
+        console.log(ids.length);
     }
 }
 
@@ -107,9 +114,11 @@ function addLocalStorage(id) {
                 favoriteBtn.className = "fas fa-heart";
             }
         }
+        ids = localStorage.getItem("IDs").split(",");
     } catch (error) {
         console.log("Ops! " + error);
     }
+
 }
 
 function ejecutaFavoritos() {
