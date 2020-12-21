@@ -13,6 +13,10 @@
   margin-bottom: 100px;
 }
 
+body.dark .expandActive {
+  background-color: #000000;
+}
+
 .expandActive .modal-close {
   background-color: unset;
   border: 0;
@@ -56,10 +60,18 @@
   margin-bottom: 5px;
 }
 
+body.dark .expandActive .ctn-expand-data .expand-data-text .text-user {
+  color: #ffffff;
+}
+
 .expandActive .ctn-expand-data .expand-data-text .text-title {
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
   text-align: left;
+}
+
+body.dark .expandActive .ctn-expand-data .expand-data-text .text-title {
+  color: #ffffff;
 }
 
 .expandActive .ctn-expand-data .expand-data-button {
@@ -86,13 +98,25 @@
   font-size: 18px;
 }
 
+body.dark .expandActive .ctn-expand-data .expand-data-button .button-download-favorite .fa-heart {
+  color: #ffffff;
+}
+
 .expandActive .ctn-expand-data .expand-data-button .button-download-favorite .fa-trash-alt {
   color: #572EE5;
   font-size: 18px;
 }
 
+body.dark .expandActive .ctn-expand-data .expand-data-button .button-download-favorite .fa-trash-alt {
+  color: #ffffff;
+}
+
 .expandActive .ctn-expand-data .expand-data-button .button-download-favorite .fa-download {
   color: #572EE5;
   font-size: 18px;
+}
+
+body.dark .expandActive .ctn-expand-data .expand-data-button .button-download-favorite .fa-download {
+  color: #ffffff;
 }
 /*# sourceMappingURL=expand.css.map */

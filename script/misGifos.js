@@ -104,5 +104,5 @@ function addLocalStorageMisGifos(id) {
         localStorage.setItem("myGifos", ids);
         trashBtn.className = "far fa-trash-alt";
     }
-    // window.location.pathname = '/misGifos.html';
+    window.location.pathname = '/misGifos.html';
 }

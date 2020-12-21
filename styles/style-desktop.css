@@ -11,6 +11,8 @@
   }
   header img {
     margin: unset;
+    width: 47px;
+    height: 47px;
   }
   header .burger-btn {
     display: none;
@@ -62,6 +64,9 @@
     font-weight: bold;
     text-transform: uppercase;
   }
+  body.dark header nav ul li a {
+    color: #ffffff;
+  }
   header nav ul li .navOnclick {
     color: #9CAFC3;
   }
@@ -82,6 +87,15 @@
   }
   header nav ul li #crearGifo:active {
     background-image: url(/images/CTA-crear-gifo-active.svg);
+  }
+  body.dark header nav ul li #crearGifo {
+    background-image: url(/images/CTA-crear-gifo-modo-noc.svg);
+  }
+  body.dark header nav ul li #crearGifo:hover {
+    background-image: url(/images/CTA-crear-gifo-hover-modo-noc.svg);
+  }
+  body.dark header nav ul li #crearGifo:active {
+    background-image: url(/images/CTA-crear-gifo-active-modo-noc.svg);
   }
   header nav ul li:hover {
     border-bottom: 2px solid #50E3C2;
@@ -458,7 +472,18 @@
     color: #ffffff;
     text-align: left;
   }
-  main .crearGifoBtn {
+  main .homeCrearGifo {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-bottom: 60px;
+  }
+  body.dark main .homeCrearGifo {
+    background-color: #37383C;
+  }
+  main .homeCrearGifo .crearGifoBtn {
     color: #572EE5;
     border: solid 1px #572EE5;
     border-radius: 25px;
@@ -469,54 +494,90 @@
         align-self: center;
     cursor: pointer;
   }
-  main .crearGifoBtn:hover {
+  main .homeCrearGifo .crearGifoBtn:hover {
     background-color: #572EE5;
     color: white;
   }
-  main #start {
+  body.dark main .homeCrearGifo .crearGifoBtn {
+    background-color: #37383C;
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+  body.dark main .homeCrearGifo .crearGifoBtn:hover {
+    background-color: #572EE5;
+    color: #ffffff;
+  }
+  main .homeCrearGifo .actionBtn {
+    position: relative;
+    top: 280px;
+    right: 570px;
+    margin-bottom: 40px;
+  }
+  main .homeCrearGifo #start {
     display: initial;
-    width: 127px;
+    width: 200px;
     height: 50px;
   }
-  main #record {
+  main .homeCrearGifo #record {
     display: none;
-    width: 127px;
+    width: 200px;
     height: 50px;
   }
-  main #finish {
+  main .homeCrearGifo #finish {
     display: none;
-    width: 127px;
+    width: 200px;
     height: 50px;
   }
-  main #upload {
+  main .homeCrearGifo #upload {
     display: none;
-    width: 127px;
+    width: 200px;
     height: 50px;
-  }
-  main .homeCrearGifo {
-    width: 100%;
-    height: 500px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
   }
   main .homeCrearGifo .cameraCtn {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    position: relative;
     -ms-flex-item-align: center;
         align-self: center;
-    left: 60px;
+  }
+  main .homeCrearGifo .cameraCtn .camera {
+    position: relative;
+    background-repeat: no-repeat;
+    width: 124px;
+    height: 165px;
+    bottom: 29px;
+    left: 40px;
+    background-image: url(/images/camara.svg);
+  }
+  body.dark main .homeCrearGifo .cameraCtn .camera {
+    background-image: url(/images/camara-modo-noc.svg);
   }
   main .homeCrearGifo .cameraCtn .light {
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 140px;
     position: relative;
-    top: 3px;
-    opacity: 60%;
+    bottom: 10px;
+    left: 40px;
+    opacity: 50%;
+    background-image: url(/images/light.svg);
+  }
+  body.dark main .homeCrearGifo .cameraCtn .light {
+    opacity: 70%;
   }
   main .homeCrearGifo .roll {
+    width: 240px;
+    height: 100px;
+    background-repeat: no-repeat;
     -ms-flex-item-align: end;
         align-self: flex-end;
+    position: relative;
+    bottom: 90px;
+    left: 20px;
+    background-image: url(/images/pelicula.svg);
+  }
+  body.dark main .homeCrearGifo .roll {
+    background-image: url(/images/pelicula-modo-noc.svg);
   }
   main .homeCrearGifo .crearGifoCtn {
     display: -webkit-box;
@@ -532,7 +593,8 @@
             flex-flow: column wrap;
     border-bottom: 5px solid #572EE5;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin: 2rem 0 5rem 0;
+    padding-bottom: 70px;
   }
   main .homeCrearGifo .crearGifoCtn .white-p {
     font-size: 15px;
@@ -562,10 +624,16 @@
   main .homeCrearGifo .crearGifoCtn .progressCtn h1 span {
     color: #50E3C2;
   }
+  body.dark main .homeCrearGifo .crearGifoCtn .progressCtn h1 {
+    color: #ffffff;
+  }
   main .homeCrearGifo .crearGifoCtn .progressCtn p {
     font-size: 16px;
     font-family: "Roboto", sans-serif;
     line-height: 29px;
+  }
+  body.dark main .homeCrearGifo .crearGifoCtn .progressCtn p {
+    color: #ffffff;
   }
   main .homeCrearGifo .crearGifoCtn .progressCtn .step {
     width: 30px;
@@ -587,9 +655,11 @@
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
     color: #572EE5;
-    right: 240px;
-    bottom: 55px;
-    position: absolute;
+    left: 540px;
+    right: 0px;
+    bottom: 30px;
+    width: 110px;
+    position: relative;
     cursor: pointer;
   }
   main .homeCrearGifo .crearGifoCtn .progressCtn .counter:hover {

@@ -104,6 +104,9 @@ function step4() {
     recorder.stopRecording(onStop);
     counter.addEventListener('click', cleanAll);
     counter.innerText = "REPETIR CAPTURA";
+    counter.style.fontSize = "16px";
+    counter.style.width = "160px";
+    counter.style.left = "490px";
     upload.style.display = "initial";
     finish.style.display = "none";
 }
@@ -172,5 +175,8 @@ function cleanAll() {
     introVideo.style.display = 'initial';
     video.style.display = "none";
     counter.innerText = "";
+    counter.style.left = "540px";
+    counter.style.fontSize = "1rem";
+    counter.style.width = "110px";
     videoCtn.removeChild(loadingModal);
 }

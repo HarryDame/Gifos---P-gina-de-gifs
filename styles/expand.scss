@@ -11,6 +11,9 @@
     top: 0;
     overflow: scroll;
     margin-bottom: 100px;
+    body.dark & {
+        background-color: #000000;
+    }
     .modal-close {
         background-color: unset;
         border: 0;
@@ -42,11 +45,17 @@
                 font-family: $roboto;
                 text-align: left;
                 margin-bottom: 5px;
+                body.dark & {
+                    color: #ffffff;
+                }
             }
             .text-title {
                 font-size: 14px;
                 font-family: $montserrat;
                 text-align: left;
+                body.dark & {
+                    color: #ffffff;
+                }
             }
         }
         .expand-data-button {
@@ -64,14 +73,23 @@
                 .fa-heart {
                     color: $violeta;
                     font-size: 18px;
+                    body.dark & {
+                        color: #ffffff;
+                    }
                 }
                 .fa-trash-alt {
                     color: $violeta;
                     font-size: 18px;
+                    body.dark & {
+                        color: #ffffff;
+                    }
                 }
                 .fa-download {
                     color: $violeta;
                     font-size: 18px;
+                    body.dark & {
+                        color: #ffffff;
+                    }
                 }
             }
         }

@@ -8,6 +8,8 @@
             z-index: 1000;
             img {
                 margin: unset;
+                width: 47px;
+                height: 47px;
             }
             .burger-btn {
                 display: none;
@@ -44,6 +46,9 @@
                             text-decoration: none;
                             font-weight: bold;
                             text-transform: uppercase;
+                            body.dark & {
+                                color: #ffffff;
+                            }
                         }
                         .navOnclick {
                             color: $gris-desktop;
@@ -64,6 +69,15 @@
                             }
                             &:active {
                                 background-image: url(/images/CTA-crear-gifo-active.svg);
+                            }
+                            body.dark & {
+                                background-image: url(/images/CTA-crear-gifo-modo-noc.svg);
+                                &:hover {
+                                    background-image: url(/images/CTA-crear-gifo-hover-modo-noc.svg);
+                                }
+                                &:active {
+                                    background-image: url(/images/CTA-crear-gifo-active-modo-noc.svg);
+                                }
                             }
                         }
                         &:hover {
@@ -419,56 +433,107 @@
                 }
             }
             //Crear Gifo
-            .crearGifoBtn {
-                color: $violeta;
-                border: solid 1px $violeta;
-                border-radius: 25px;
-                background: transparent;
-                font-weight: 600;
-                align-self: center;
-                cursor: pointer;
-                &:hover {
-                    background-color: $violeta;
-                    color: white;
-                }
-            }
-            #start {
-                display: initial;
-                width: 127px;
-                height: 50px;
-            }
-            #record {
-                display: none;
-                width: 127px;
-                height: 50px;
-            }
-            #finish {
-                display: none;
-                width: 127px;
-                height: 50px;
-            }
-            #upload {
-                display: none;
-                width: 127px;
-                height: 50px;
-            }
             .homeCrearGifo {
                 width: 100%;
-                height: 500px;
+                height: 100%;
                 display: flex;
+                // margin-top: 10px;
+                padding-bottom: 60px;
+                body.dark & {
+                    background-color: $bg-dark;
+                }
+                .crearGifoBtn {
+                    color: $violeta;
+                    border: solid 1px $violeta;
+                    border-radius: 25px;
+                    background: transparent;
+                    font-weight: 600;
+                    align-self: center;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: $violeta;
+                        color: white;
+                    }
+                    body.dark & {
+                        background-color: $bg-dark;
+                        color: #ffffff;
+                        border-color: #ffffff;
+                        &:hover {
+                            background-color: $violeta;
+                            color: #ffffff;
+                        }
+                    }
+                }
+                .actionBtn {
+                    position: relative;
+                    top: 280px;
+                    right: 570px;
+                    margin-bottom: 40px;
+                }
+                #start {
+                    display: initial;
+                    width: 200px;
+                    height: 50px;
+                }
+                #record {
+                    display: none;
+                    width: 200px;
+                    height: 50px;
+                }
+                #finish {
+                    display: none;
+                    width: 200px;
+                    height: 50px;
+                }
+                #upload {
+                    display: none;
+                    width: 200px;
+                    height: 50px;
+                }
                 .cameraCtn {
                     display: flex;
-                    position: relative;
+                    // position: relative;
                     align-self: center;
-                    left: 60px;
-                    .light {
+                    // left: 60px;
+                    .camera {
                         position: relative;
-                        top: 3px;
-                        opacity: 60%;
+                        background-repeat: no-repeat;
+                        width: 124px;
+                        height: 165px;
+                        bottom: 29px;
+                        left: 40px;
+                        background-image: url(/images/camara.svg);
+                        body.dark & {
+                            background-image: url(/images/camara-modo-noc.svg);
+                        }
+                    }
+                    .light {
+                        background-repeat: no-repeat;
+                        width: 100px;
+                        height: 140px;
+                        position: relative;
+                        bottom: 10px;
+                        left: 40px;
+                        opacity: 50%;
+                        // margin-right: 50px;
+                        background-image: url(/images/light.svg);
+                        body.dark & {
+                            opacity: 70%;
+                        }
                     }
                 }
                 .roll {
+                    width: 240px;
+                    height: 100px;
+                    background-repeat: no-repeat;
                     align-self: flex-end;
+                    position: relative;
+                    bottom: 90px;
+                    left: 20px;
+                    background-image: url(/images/pelicula.svg);
+                    body.dark & {
+                        background-image: url(/images/pelicula-modo-noc.svg);
+                    }
                 }
                 .crearGifoCtn {
                     display: flex;
@@ -477,7 +542,8 @@
                     flex-flow: column wrap;
                     border-bottom: 5px solid $violeta;
                     border-radius: 5px;
-                    margin-bottom: 20px;
+                    margin: 2rem 0 5rem 0;
+                    padding-bottom: 70px;
                     .white-p {
                         font-size: 15px;
                         font-family: $montserrat;
@@ -502,11 +568,17 @@
                             span {
                                 color: $celeste;
                             }
+                            body.dark & {
+                                color: #ffffff;
+                            }
                         }
                         p {
                             font-size: 16px;
                             font-family: $roboto;
                             line-height: 29px;
+                            body.dark & {
+                                color: #ffffff;
+                            }
                         }
                         .step {
                             width: 30px;
@@ -524,9 +596,11 @@
                             font-family: $montserrat;
                             font-size: 1rem;
                             color: $violeta;
-                            right: 240px;
-                            bottom: 55px;
-                            position: absolute;
+                            left: 540px;
+                            right: 0px;
+                            bottom: 30px;
+                            width: 110px;
+                            position: relative;
                             cursor: pointer;
                             &:hover {
                                 border-bottom: 2px solid $celeste;

@@ -12,7 +12,7 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 95px;
+  min-height: 97px;
   width: 100%;
   border-top: 5px solid #572EE5;
   -webkit-box-pack: justify;
@@ -27,18 +27,33 @@ header {
           flex-flow: row wrap;
   z-index: 3;
   position: fixed;
-  background-color: white;
   top: 0;
+  background-color: white;
+  -webkit-transition: .8s ease all;
+  transition: .8s ease all;
 }
 
-header .logo {
-  width: 48.8px;
-  height: 48.8px;
+body.dark header {
+  background-color: #37383C;
+  border-top-color: #000000;
+}
+
+body.dark header .logo-dark {
+  background-image: url(/images/logo-desktop-modo-noc.svg);
 }
 
 header img {
   cursor: pointer;
   margin: 0 1rem;
+}
+
+header .logo {
+  width: 40px;
+  height: 40px;
+}
+
+header #switch {
+  cursor: pointer;
 }
 
 header input[type="checkbox"] {
@@ -97,6 +112,11 @@ header input[type="checkbox"]:checked ~ nav ul li a:hover {
   border-bottom: 1px solid yellowgreen;
 }
 
+body.dark header input[type="checkbox"]:checked ~ nav {
+  background-color: #000000;
+  opacity: 100%;
+}
+
 header input[type="checkbox"]:checked ~ label .close-btn {
   display: initial;
 }
@@ -113,6 +133,27 @@ header label {
 
 header label .close-btn {
   display: none;
+  margin: 0 1rem;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+  background-image: url(/images/close.svg);
+}
+
+body.dark header label .close-btn {
+  background-image: url(/images/close-modo-noct.svg);
+}
+
+header label .burger-btn {
+  background-repeat: no-repeat;
+  margin: 0 1rem;
+  width: 18px;
+  height: 18px;
+  background-image: url(/images/burger.svg);
+}
+
+body.dark header label .burger-btn {
+  background-image: url(/images/burger-modo-noct.svg);
 }
 
 header nav {
@@ -174,6 +215,24 @@ main .home {
   -ms-flex-line-pack: center;
       align-content: center;
   width: 100%;
+  padding-top: 10px;
+}
+
+body.dark main .home {
+  background-color: #37383C;
+}
+
+body.dark main .home h1 {
+  color: #ffffff;
+}
+
+body.dark main .home .search-cont {
+  border-color: #ffffff;
+}
+
+body.dark main .home .search {
+  background-color: #37383C;
+  color: #ffffff;
 }
 
 main .home #video {
@@ -303,16 +362,33 @@ main .home .search-cont .busqueda .search::placeholder {
 main .home .search-cont .busqueda .cerrar {
   display: none;
   float: left;
+  background-image: url(/images/close.svg);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  width: 18px;
+}
+
+body.dark main .home .search-cont .busqueda .cerrar {
+  background-image: url(/images/close-modo-noct.svg);
 }
 
 main .home .search-cont .busqueda .lupa-gris {
   display: none;
-  width: 20px;
+  width: 18px;
+  background-image: url(/images/icon-search-gris.svg);
+  cursor: pointer;
+  background-repeat: no-repeat;
 }
 
 main .home .search-cont .busqueda .lupa-violeta {
   float: left;
   width: 20px;
+  background-image: url(/images/icon-search.svg);
+  background-repeat: no-repeat;
+}
+
+body.dark main .home .search-cont .busqueda .lupa-violeta {
+  background-image: url(/images/icon-search-mod-noc.svg);
 }
 
 main .home .search-cont .buscadorSugerencia {
@@ -482,6 +558,10 @@ main .trends h3 {
   line-height: 25px;
 }
 
+body.dark main .trends h3 {
+  color: #ffffff;
+}
+
 main .trends p {
   text-transform: capitalize;
   margin: 1% 0;
@@ -489,6 +569,10 @@ main .trends p {
   line-height: 25px;
   font-size: 14px;
   font-weight: 500;
+}
+
+body.dark main .trends p {
+  color: #ffffff;
 }
 
 main .trending {
@@ -510,11 +594,19 @@ main .trending {
   width: 100%;
 }
 
+body.dark main .trending {
+  background-color: #222326;
+}
+
 main .trending h3 {
   font-size: 20px;
   line-height: 30px;
   font-weight: 700;
   color: #572EE5;
+}
+
+body.dark main .trending h3 {
+  color: #ffffff;
 }
 
 main .trending .trending-p {
@@ -524,6 +616,10 @@ main .trending .trending-p {
   line-height: 23px;
   padding: 3% 20%;
   width: 85%;
+}
+
+body.dark main .trending .trending-p {
+  color: #ffffff;
 }
 
 main .trending .contAllCarrusel {
@@ -636,6 +732,11 @@ footer {
   padding: 5% 0 5%;
 }
 
+body.dark footer {
+  background-color: #37383C;
+  border-bottom-color: #000000;
+}
+
 footer .compartir {
   width: 100px;
   display: -webkit-box;
@@ -688,11 +789,19 @@ footer .title {
   margin: 5% 0 5%;
 }
 
+body.dark footer .title {
+  color: #ffffff;
+}
+
 footer .sub-title {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
   margin: 5% 0 1%;
+}
+
+body.dark footer .sub-title {
+  color: #ffffff;
 }
 /*# sourceMappingURL=style-mobile.css.map */

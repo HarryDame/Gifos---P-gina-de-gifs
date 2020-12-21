@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/style-mobile.css">
     <link rel="stylesheet" href="styles/style-desktop.css">
     <link rel="stylesheet" href="styles/gifs.css">
+    <link rel="stylesheet" href="styles/darkMode.css">
     <title>Crear Gifo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 </head>
@@ -14,17 +15,17 @@
 <body>
     <header>
         <!-- Logo gifos -->
-        <a href="index.html" class="logoCtn"><img class="logo" alt="Bob Esponja" src="images/bobEsponja4.gif"></a>
+        <a href="index.html" class="logoCtn"><img alt="logo" id="logo" class="logo"></a>
         <!-- Menú hamburguesa -->
         <input type="checkbox" id="checkbox" />
         <label for="checkbox">
-            <img class="burger-btn" src="images/burger.svg" alt="Abrir menú">
-            <img class="close-btn" src="images/close.svg" alt="Cerrar menú">
+            <a class="burger-btn"></a>
+            <a class="close-btn"></a>
         </label>
         <nav>
             <!-- Este es nuestro nav abierto -->
             <ul>
-                <li><a href="#modonocturno">Modo Nocturno</a></li>
+                <li><a id="switch">Modo Nocturno</a></li>
                 <li><a href="favoritos.html">Favoritos</a></li>
                 <li><a href="misGifos.html">Mis GIFOS</a></li>
                 <li>
@@ -37,8 +38,8 @@
         <!-- Contenedor total -->
         <section class="homeCrearGifo">
             <aside class="cameraCtn">
-                <img src="./images/camara.svg" alt="camera" class="camera">
-                <img src="./images/Path 2.svg" alt="light" class="light">
+                <a class="camera"></a>
+                <a class="light"></a>
             </aside>
             <section class="crearGifoCtn">
                 <!-- Camara a la izquierda al medio -->
@@ -70,15 +71,15 @@
             </section>
             <!-- Rollo de camara en la parte inferior derecha -->
             <aside class="roll">
-                <img src="./images/pelicula.svg" alt="roll" class="roll">
+                <a class="roll"></a>
             </aside>
             <!-- Acá va la linea violeta(bottom) -->
+            <button id="start" class="crearGifoBtn actionBtn">COMENZAR</button>
+            <button id="record" class="crearGifoBtn actionBtn">GRABAR</button>
+            <button id="finish" class="crearGifoBtn actionBtn">FINALIZAR</button>
+            <button id="upload" class="crearGifoBtn actionBtn">SUBIR GIF</button>
         </section>
 
-        <button id="start" class="crearGifoBtn">COMENZAR</button>
-        <button id="record" class="crearGifoBtn">GRABAR</button>
-        <button id="finish" class="crearGifoBtn">FINALIZAR</button>
-        <button id="upload" class="crearGifoBtn">SUBIR GIF</button>
     </main>
     <footer>
         <p class="title">Compartir en:</p>
@@ -92,5 +93,6 @@
 </body>
 <script src="script/crearGifo.js"></script>
 <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+<script src="script/darkMode.js"></script>
 
 </html>
