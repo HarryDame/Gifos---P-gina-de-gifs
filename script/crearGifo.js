@@ -128,8 +128,7 @@ async function step5() {
         json: true
     });
     let data = await resp.json();
-    console.log(data);
-
+    console.log(resp);
     let myGifosArray = new Array;
     myGifosArray = localStorage.getItem("myGifos");
     if (myGifosArray === null) {

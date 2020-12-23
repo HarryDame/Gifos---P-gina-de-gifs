@@ -465,30 +465,24 @@
                     }
                 }
                 .actionBtn {
-                    position: relative;
-                    top: 280px;
-                    right: 570px;
+                    position: absolute;
+                    top: 630px;
+                    right: 514px;
+                    width: 130px;
+                    height: 40px;
                     margin-bottom: 40px;
                 }
                 #start {
                     display: initial;
-                    width: 200px;
-                    height: 50px;
                 }
                 #record {
                     display: none;
-                    width: 200px;
-                    height: 50px;
                 }
                 #finish {
                     display: none;
-                    width: 200px;
-                    height: 50px;
                 }
                 #upload {
                     display: none;
-                    width: 200px;
-                    height: 50px;
                 }
                 .cameraCtn {
                     display: flex;

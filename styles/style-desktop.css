@@ -508,30 +508,24 @@
     color: #ffffff;
   }
   main .homeCrearGifo .actionBtn {
-    position: relative;
-    top: 280px;
-    right: 570px;
+    position: absolute;
+    top: 630px;
+    right: 514px;
+    width: 130px;
+    height: 40px;
     margin-bottom: 40px;
   }
   main .homeCrearGifo #start {
     display: initial;
-    width: 200px;
-    height: 50px;
   }
   main .homeCrearGifo #record {
     display: none;
-    width: 200px;
-    height: 50px;
   }
   main .homeCrearGifo #finish {
     display: none;
-    width: 200px;
-    height: 50px;
   }
   main .homeCrearGifo #upload {
     display: none;
-    width: 200px;
-    height: 50px;
   }
   main .homeCrearGifo .cameraCtn {
     display: -webkit-box;
